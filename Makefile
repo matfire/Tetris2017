@@ -5,15 +5,15 @@
 ## Makefile
 ##
 
-SRC	=		src/main.c \
-			src/get_next_line.c \
-			src/piece.c \
+SRC	=		src/main.c		\
+			src/get_next_line.c	\
+			src/piece.c		\
 
-CRIT_SRC	=	bonus/is_horizontal.c \
-			bonus/get_tile.c \
-			bonus/get_size.c \
-			src/ship.c \
-			src/lib.c \
+CRIT_SRC	=	bonus/is_horizontal.c	\
+			bonus/get_tile.c	\
+			bonus/get_size.c	\
+			src/ship.c		\
+			src/lib.c		\
 			src/get_next_line.c
 
 CRIT_NAME	=	criterion
@@ -43,3 +43,5 @@ re	:	fclean all
 test_run:			$(OBJ)
 		cc -o $(CRIT_NAME) $(CRIT_SRC) $(LDFLAGS)
 		./$(CRIT_NAME)
+
+.PHONY: all clean fclean re test_run
