@@ -40,7 +40,7 @@ fclean	:	clean
 
 re	:	fclean all
 
-test_run:			$(OBJ)
+test_run:
 		cc -std=c99 -o $(CRIT_NAME) $(CRIT_SRC) $(LDFLAGS)
 		./$(CRIT_NAME)
 
