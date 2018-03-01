@@ -8,7 +8,8 @@
 SRC	=		src/main.c		\
 			src/get_next_line.c	\
 			src/piece.c		\
-			src/utils.c
+			src/utils.c		\
+			src/display_game.c	\
 
 CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/contains_str.c	\
@@ -29,7 +30,7 @@ LDFLAGS = -lcriterion -lgcov --verbose -I./inc
 all	:	$(NAME)
 
 $(NAME):			$(OBJ)
-		gcc -o $(NAME) $(OBJ)
+		gcc -o $(NAME) $(OBJ) -lncurse
 
 clean	:
 			rm -f $(NAME)
