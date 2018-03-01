@@ -8,6 +8,7 @@
 SRC	=		src/main.c		\
 			src/get_next_line.c	\
 			src/piece.c		\
+			src/utils.c
 
 CRIT_SRC	=	bonus/is_horizontal.c	\
 			bonus/get_tile.c	\

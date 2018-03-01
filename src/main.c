@@ -28,11 +28,11 @@ void display_help(void)
 int main(int ac, char **av)
 {
 	DIR *dir;
-	blocks_t *pieces;
+	piece_t **pieces;
 
 	if (my_strcmp(av[1], "-help") == 0)
 		display_help();
-	if (pieces = create_pieces())
+	if ((pieces = create_pieces()) == NULL)
 		return (84);
 	return (0);
 }

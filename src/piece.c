@@ -7,26 +7,40 @@
 
 #include "tetris.h"
 
+int is_valid_file(char *str);
+
 int get_files_on_dir(void)
 {
 	DIR *dir;
 	int count = 0;
+	struct dirent *file;
 
 	dir = opendir("tetriminos");
 	if (dir == NULL)
 		return (-1);
+	for (int i = 0; (file = readdir(dir)) != NULL; i++) {
+	//	if (is_valid_file(file->d_name))
+		//	continue;
+		//else
+			count += 1;
+	}
+	closedir(dir);
 	return (count);
 }
 
-blocks_t *create_pieces(void)
+piece_t **create_pieces(void)
 {
-	blocks_t *res;
-	int count = 1;
+	int count;
+	piece_t **pieces;
+	DIR *dir;
 
-	if ((count = get_files_on_dir()) == -1 || count == 0)
+	if ((count = get_files_on_dir()) <= 0)
 		return (NULL);
-	res = malloc(sizeof(blocks_t));
-	res->pieces = malloc(sizeof(char**) * (count + 1));
-	res->pieces[count] = NULL;
-	return (res);
+	pieces = malloc(sizeof(piece_t*) * (count + 1));
+	pieces[count] = NULL;
+	dir = opendir("tetriminos");
+	//for (int i = 0; i < count; i++)
+	//	pieces[i] = create_block(dir);
+	closedir(dir);
+	return (pieces);
 }
