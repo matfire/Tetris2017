@@ -31,7 +31,8 @@ int main(int ac, char **av)
 
 	if (my_strcmp(av[1], "-help") == 0)
 		display_help();
-	if ((pieces = create_pieces()) == NULL)
-		return (84);
+	// if ((pieces = create_pieces()) == NULL)
+		// return (84);
+	display_game(pieces);
 	return (0);
 }

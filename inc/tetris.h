@@ -1,4 +1,9 @@
-
+/*
+** EPITECH PROJECT, 2018
+** PSU_tetris_2017
+** File description:
+** 
+*/
 
 #ifndef MY_TETRIS
 
@@ -10,6 +15,7 @@
 #include <sys/types.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include "my.h"
 
 typedef struct piece_s {
 	char **shape;
