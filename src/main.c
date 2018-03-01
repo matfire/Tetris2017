@@ -27,7 +27,6 @@ void display_help(void)
 
 int main(int ac, char **av)
 {
-	DIR *dir;
 	piece_t **pieces;
 
 	if (my_strcmp(av[1], "-help") == 0)

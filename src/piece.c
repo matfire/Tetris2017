@@ -7,7 +7,12 @@
 
 #include "tetris.h"
 
-int is_valid_file(char *str);
+int is_valid_file(char *str)
+{
+	if (contains_str(str, "tetrimino"))
+		return (1);
+	return (0);
+}
 
 int get_files_on_dir(void)
 {
@@ -19,9 +24,9 @@ int get_files_on_dir(void)
 	if (dir == NULL)
 		return (-1);
 	for (int i = 0; (file = readdir(dir)) != NULL; i++) {
-	//	if (is_valid_file(file->d_name))
-		//	continue;
-		//else
+		if (is_valid_file(file->d_name))
+			continue;
+		else
 			count += 1;
 	}
 	closedir(dir);

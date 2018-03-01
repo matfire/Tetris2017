@@ -10,12 +10,11 @@ SRC	=		src/main.c		\
 			src/piece.c		\
 			src/utils.c
 
-CRIT_SRC	=	bonus/is_horizontal.c	\
-			bonus/get_tile.c	\
-			bonus/get_size.c	\
-			src/ship.c		\
-			src/lib.c		\
-			src/get_next_line.c
+CRIT_SRC	=	bonus/is_valid_file.c	\
+			bonus/contains_str.c	\
+			src/utils.c		\
+			src/piece.c		\
+			src/get_next_line.c	\
 
 CRIT_NAME	=	criterion
 
@@ -41,8 +40,8 @@ fclean	:	clean
 
 re	:	fclean all
 
-test_run:			$(OBJ)
-		cc -o $(CRIT_NAME) $(CRIT_SRC) $(LDFLAGS)
+test_run:
+		cc -std=c99 -o $(CRIT_NAME) $(CRIT_SRC) $(LDFLAGS)
 		./$(CRIT_NAME)
 
 .PHONY: all clean fclean re test_run
