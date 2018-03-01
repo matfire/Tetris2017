@@ -43,13 +43,13 @@ int find_char(char *str, char c)
 
 int contains_str(char *str, char *base)
 {
-	int i = find_char(str, '.');
+	int i = find_char(str, '.') + 1;
 	int y = 0;
 
 	if (i == -1)
 		return (1);
-	for (y = 0; str[i] == base[y]; i++, y++);
-	if (str[i] == '\0' && base[y] == '\0')
+	for (y = 0; str[i] == base[y] && str[i] != '\0' && base[y] != '\0'; i++, y++);
+	if (i == my_strlen(str))
 		return (0);
 	return (1);
 

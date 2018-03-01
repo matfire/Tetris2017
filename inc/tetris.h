@@ -23,3 +23,4 @@ int my_strcmp(char *s1, char *s2);
 int my_strlen(char *str);
 int contains_str(char *str, char *base);
 piece_t **create_pieces(void);
+int is_valid_file(char *str);
