@@ -21,3 +21,5 @@ typedef struct piece_s {
 void my_putstr(char *str);
 int my_strcmp(char *s1, char *s2);
 int my_strlen(char *str);
+int contains_str(char *str, char *base);
+piece_t **create_pieces(void);
