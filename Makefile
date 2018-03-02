@@ -30,7 +30,11 @@ LDFLAGS = -lcriterion -lgcov --verbose -I./inc
 all	:	$(NAME)
 
 $(NAME):			$(OBJ)
+<<<<<<< HEAD
+		gcc -o $(NAME) $(OBJ) -lncurses
+=======
 		gcc -o $(NAME) $(OBJ) -lncurse
+>>>>>>> 72e8f053d4f883f54853090883f17bf96ec3194e
 
 clean	:
 			rm -f $(NAME)
