@@ -24,3 +24,9 @@ script:
   - ./install_criterion.sh
   - ./forbidden_functions
   - make test_run
+  email:
+    recipients:
+      - matteo.gassend@epitech.eu
+      - christine.marquette@epitech.eu
+    on_success: always # default: change
+    on_failure: always # default: always
