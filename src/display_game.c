@@ -7,36 +7,60 @@
 
 #include "tetris.h"
 
+char *line(int size, char first, char second, char end)
+{
+	int i = 0;
+	char *line = malloc(sizeof(char) * (size + 3));
+
+	line[0] = first;
+	while (++i <= size)
+	line[i] = second;
+	line[i] = end;
+	line[++i] = '\0';
+	return (line);
+}
+
+void display_tetris3(void)
+{
+	int i = 0;
+
+	mvprintw(5, 15, " *");
+	attroff(COLOR_PAIR(5));
+	attron(COLOR_PAIR(6));
+	mvprintw(1, 17, " ***");
+	mvprintw(2, 17, " *  ");
+	mvprintw(3, 17, " ***");
+	mvprintw(4, 17, "   *");
+	mvprintw(5, 17, " ***");
+	attroff(COLOR_PAIR(6));
+	mvprintw(7, 0, "%s", line(17, '/', '-', '\\'));
+	while (++i < 9)
+		mvprintw(7 + i, 0, "%s", line(17, '|', ' ', '|'));
+	mvprintw(7 + i, 0, "%s", line(17, '\\', '-', '/'));
+}
+
 void display_tetris2(void)
 {
 	attron(COLOR_PAIR(3));
-	mvprintw(0, 7, " ***");
-	mvprintw(1, 7, "  * ");
+	mvprintw(1, 7, " ***");
 	mvprintw(2, 7, "  * ");
 	mvprintw(3, 7, "  * ");
 	mvprintw(4, 7, "  * ");
+	mvprintw(5, 7, "  * ");
 	attroff(COLOR_PAIR(3));
 	attron(COLOR_PAIR(4));
-	mvprintw(0, 11, " ***");
-	mvprintw(1, 11, " * *");
-	mvprintw(2, 11, " ** ");
-	mvprintw(3, 11, " * *");
+	mvprintw(1, 11, " ***");
+	mvprintw(2, 11, " * *");
+	mvprintw(3, 11, " ** ");
 	mvprintw(4, 11, " * *");
+	mvprintw(5, 11, " * *");
 	attroff(COLOR_PAIR(4));
 	attron(COLOR_PAIR(5));
-	mvprintw(0, 15, " *");
-	mvprintw(1, 15, "  ");
-	mvprintw(2, 15, " *");
+	mvprintw(1, 15, " *");
+	mvprintw(2, 15, "  ");
 	mvprintw(3, 15, " *");
 	mvprintw(4, 15, " *");
-	attroff(COLOR_PAIR(5));
-	attron(COLOR_PAIR(6));
-	mvprintw(0, 17, " ***");
-	mvprintw(1, 17, " *  ");
-	mvprintw(2, 17, " ***");
-	mvprintw(3, 17, "   *");
-	mvprintw(4, 17, " ***");
-	attroff(COLOR_PAIR(6));
+	display_tetris3();
 }
 
 void display_tetris(void)
@@ -51,14 +75,14 @@ void display_tetris(void)
 	init_pair(5, COLOR_CYAN, COLOR_BLACK);
 	init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
 	attron(COLOR_PAIR(1));
-	printw("%s", t);
+	mvprintw(1, 0, "%s", t);
 	attroff(COLOR_PAIR(1));
 	attron(COLOR_PAIR(2));
-	mvprintw(0, 3, " ***");
-	mvprintw(1, 3, " *  ");
-	mvprintw(2, 3, " ** ");
-	mvprintw(3, 3, " *  ");
-	mvprintw(4, 3, " ***");
+	mvprintw(1, 3, " ***");
+	mvprintw(2, 3, " *  ");
+	mvprintw(3, 3, " ** ");
+	mvprintw(4, 3, " *  ");
+	mvprintw(5, 3, " ***");
 	attroff(COLOR_PAIR(2));
 	display_tetris2();
 }
@@ -66,31 +90,25 @@ void display_tetris(void)
 void display_game(piece_t **pieces)
 {
 	int ch;
-	int i = 3;
+	int i = 1;
 
 	initscr();
 	raw();
 	keypad(stdscr, TRUE);
 	display_tetris();
-	mvprintw(0, 21, " +------------------------------------+ /-next----\\");
-	mvprintw(1, 21, " |                                    | |         |");
-	mvprintw(2, 21, " |                                    | |         |");
-	mvprintw(3, 21, " |                                    | \\---------/");
-	while (++i < 42)
-		mvprintw(i, 21, " |                                    |");
-	mvprintw(i, 21, " +------------------------------------+");
-	// while (42) {
-	// 	ch = getch();
-	// 	// if (ch == KEY_UP)
-	// 	// else if (ch == KEY_LEFT)
-	// 	// else if (ch == KEY_DOWN)
-	// 	// else if (ch == KEY_RIGHT)
-	// 	refresh();
-	// 	if (ch == 32) {
-	// 		endwin();
-	// 		return (0);
-	// 	}
-	// }
+	mvprintw(1, 21, " %s", line(10, '+', '-', '+'));
+	while (++i < 20 + 1)
+		mvprintw(i, 21, " %s", line(10, '|', ' ', '|'));
+	mvprintw(i, 21, " %s", line(10, '+', '-', '+'));
+	mvprintw(1, 24 + 10, " /-next----\\");
+	mvprintw(2, 24 + 10, " |         |");
+	mvprintw(3, 24 + 10, " |         |");
+	mvprintw(4, 24 + 10, " \\---------/");
+	mvprintw(9, 2, "High Score");
+	mvprintw(10, 2, "Score");
+	mvprintw(12, 2, "Lines");
+	mvprintw(13, 2, "Level");
+	mvprintw(15, 2, "Timer");
 }
 
 /*

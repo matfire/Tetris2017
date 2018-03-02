@@ -36,5 +36,17 @@ int main(int ac, char **av)
 	// if ((pieces = create_pieces()) == NULL)
 	// 	return (84);
 	display_game(pieces);
+	while (42) {
+		ch = getch();
+		// if (ch == KEY_UP)
+		// else if (ch == KEY_LEFT)
+		// else if (ch == KEY_DOWN)
+		// else if (ch == KEY_RIGHT)
+		refresh();
+		if (ch == KEY_UP) {
+			endwin();
+			return (0);
+		}
+	}
 	return (0);
 }
