@@ -12,6 +12,12 @@ matrix:
       env:
          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
 compiler: gcc
+email:
+        recipients:
+                - matteo.gassend@epitech.eu
+                - christine.marquette@epitech.eu
+        on_success: always # default: change
+        on_failure: always # default: always
 install:
   - sudo apt-get -y install wget
   - sudo apt-get -y install gcc-4.9
@@ -24,9 +30,3 @@ script:
   - ./install_criterion.sh
   - ./forbidden_functions
   - make test_run
-  email:
-    recipients:
-      - matteo.gassend@epitech.eu
-      - christine.marquette@epitech.eu
-    on_success: always # default: change
-    on_failure: always # default: always
