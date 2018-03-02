@@ -13,6 +13,7 @@ SRC	=		src/main.c		\
 
 CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/contains_str.c	\
+			bonus/strcmp.c		\
 			src/utils.c		\
 			src/piece.c		\
 			src/get_next_line.c	\
