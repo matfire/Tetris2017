@@ -17,3 +17,13 @@ Test(find_char, no_match)
 {
 	cr_assert_eq(find_char("abcdef", 'g'), -1);
 }
+
+Test(find_char, sentence)
+{
+	cr_assert_eq(find_char("tetrimonos for life", 'i'), 4);
+}
+
+Test(find_char, no_match_sentence)
+{
+	cr_assert_eq(find_char("tetrimonos for life", "a"), -1);
+}
