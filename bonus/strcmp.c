@@ -17,3 +17,8 @@ Test(strcmp, diff)
 {
 	cr_assert_eq(my_strcmp("babb", "baba"), 1);
 }
+
+Test(strcm, normal)
+{
+	cr_assert_eq(my_strcmp("baba", "babb"), -1);
+}
