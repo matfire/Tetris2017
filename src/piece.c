@@ -7,30 +7,21 @@
 
 #include "tetris.h"
 
-int is_valid_file(char *str)
+piece_t *create_block(DIR *dir)
 {
-	if (contains_str(str, "tetrimino"))
-		return (1);
-	return (0);
-}
-
-int get_files_on_dir(void)
-{
-	DIR *dir;
-	int count = 0;
 	struct dirent *file;
+	piece_t *res;
 
-	dir = opendir("tetriminos");
-	if (dir == NULL)
-		return (-1);
-	for (int i = 0; (file = readdir(dir)) != NULL; i++) {
-		if (is_valid_file(file->d_name))
-			continue;
-		else
-			count += 1;
+	res = malloc(sizeof(piece_t) * 1);
+	if ((file = readdir(dir)) != NULL && is_current(file->d_name))
+		file = readdir(dir);
+	else {
+		//res = add_block(file->d_name);
+		return (res);
 	}
-	closedir(dir);
-	return (count);
+	res->color = 84;
+	return (res);
+
 }
 
 piece_t **create_pieces(void)
@@ -44,8 +35,9 @@ piece_t **create_pieces(void)
 	pieces = malloc(sizeof(piece_t*) * (count + 1));
 	pieces[count] = NULL;
 	dir = opendir("tetriminos");
-	//for (int i = 0; i < count; i++)
+	//for (int i = 0; i < count; i++) {
 	//	pieces[i] = create_block(dir);
+	//}
 	closedir(dir);
 	return (pieces);
 }

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2018
 ** PSU_tetris_2017
 ** File description:
-** 
+**
 */
 
 #ifndef MY_TETRIS
@@ -30,4 +30,6 @@ int my_strlen(char *str);
 int contains_str(char *str, char *base);
 piece_t **create_pieces(void);
 int is_valid_file(char *str);
+int get_files_on_dir(void);
+int is_current(char *file);
 int find_char(char *str, char c);
