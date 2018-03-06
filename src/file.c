@@ -16,7 +16,7 @@ int is_valid_file(char *str)
 
 int is_current(char *file)
 {
-	if (file[0] = '.')
+	if (file[0] == '.')
 		return (1);
 	return (0);
 }

@@ -10,12 +10,17 @@ SRC	=		src/main.c		\
 			src/piece.c		\
 			src/utils.c		\
 			src/display_game.c	\
-			src/file.c
+			src/file.c		\
+			src/my_strcat.c		\
+			src/my_str_to_word_tab.c \
 
 CRIT_SRC	=	bonus/is_valid_file.c	\
+			bonus/str_to_word_tab.c	\
 			bonus/contains_str.c	\
 			bonus/strcmp.c		\
 			src/file.c		\
+			src/my_strcat.c		\
+			src/my_str_to_word_tab.c \
 			src/utils.c		\
 			src/piece.c		\
 			src/get_next_line.c	\

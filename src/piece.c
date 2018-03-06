@@ -16,13 +16,27 @@ piece_t *create_block(DIR *dir)
 	if ((file = readdir(dir)) != NULL && (is_current(file->d_name) || is_valid_file(file->d_name)))
 		file = readdir(dir);
 	else {
-		//res = add_block(file->d_name);
+		res = add_block(file->d_name);
 	}
 	if (res != NULL)
 		return (res);
 	res->color = 84;
 	return (res);
 
+}
+
+piece_t *add_block(char *file_name)
+{
+	char *file_path;
+	char **data_tetrimino;
+	char **shape;
+	piece_t *res;
+	int fd = 0;
+
+	res = malloc(sizeof(piece_t) * 1);
+	file_path = my_strcat("tetriminos/", file_name);
+	fd = open(file_path, O_RDONLY);
+	data_tetrimino = my_str_to_word_tab(get_next_line(fd));
 }
 
 piece_t **create_pieces(void)
