@@ -17,7 +17,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <dirent.h>
-#include "my.h"
 
 typedef struct piece_s {
 	char **shape;
@@ -28,6 +27,8 @@ typedef struct piece_s {
 
 char *my_strcat(char *dest, char *src);
 char **my_str_to_word_tab(char *str);
+char *my_strcpy(char *src);
+int my_getnbr(char *str);
 void my_putstr(char *str);
 int my_strcmp(char *s1, char *s2);
 int my_strlen(char *str);

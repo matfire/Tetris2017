@@ -28,15 +28,28 @@ piece_t *create_block(DIR *dir)
 piece_t *add_block(char *file_name)
 {
 	char *file_path;
+	char *line;
 	char **data_tetrimino;
-	char **shape;
 	piece_t *res;
 	int fd = 0;
+	int i = 1;
 
 	res = malloc(sizeof(piece_t) * 1);
 	file_path = my_strcat("tetriminos/", file_name);
 	fd = open(file_path, O_RDONLY);
 	data_tetrimino = my_str_to_word_tab(get_next_line(fd));
+	res->shape = malloc(sizeof(char*) * (my_getnbr(data_tetrimino[1]) + 1));
+	while ((line = get_next_line(fd))) {
+		res->shape[i] = my_strcpy(line);
+		free(line);
+		i++;
+	}
+	res->shape[my_getnbr(data_tetrimino[1])] = NULL;
+	res->color = my_getnbr(data_tetrimino[2]);
+	free(data_tetrimino);
+	close(fd);
+	free(file_path);
+	return (res);
 }
 
 piece_t **create_pieces(void)

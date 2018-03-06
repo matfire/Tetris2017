@@ -13,14 +13,19 @@ SRC	=		src/main.c		\
 			src/file.c		\
 			src/my_strcat.c		\
 			src/my_str_to_word_tab.c \
+			src/my_strcpy.c		\
+			src/my_getnbr.c		\
 
 CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/str_to_word_tab.c	\
 			bonus/contains_str.c	\
 			bonus/strcmp.c		\
+			bonus/strcpy.c		\
 			src/file.c		\
 			src/my_strcat.c		\
 			src/my_str_to_word_tab.c \
+			src/my_strcpy.c		\
+			src/my_getnbr.c		\
 			src/utils.c		\
 			src/piece.c		\
 			src/get_next_line.c	\
