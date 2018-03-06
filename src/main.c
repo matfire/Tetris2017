@@ -28,8 +28,9 @@ void display_help(void)
 int main(int ac, char **av)
 {
 	piece_t **pieces;
+	int ch;
 
-	if (my_strcmp(av[1], "--help") == 0) {
+	if (ac  >= 1 && my_strcmp(av[1], "--help") == 0) {
 		display_help();
 		return (0);
 	}

@@ -13,12 +13,13 @@ piece_t *create_block(DIR *dir)
 	piece_t *res;
 
 	res = malloc(sizeof(piece_t) * 1);
-	if ((file = readdir(dir)) != NULL && is_current(file->d_name))
+	if ((file = readdir(dir)) != NULL && (is_current(file->d_name) || is_valid_file(file->d_name)))
 		file = readdir(dir);
 	else {
 		//res = add_block(file->d_name);
-		return (res);
 	}
+	if (res != NULL)
+		return (res);
 	res->color = 84;
 	return (res);
 
