@@ -33,11 +33,9 @@ int main(int ac, char **av)
 
 	if ((the_floor = malloc(sizeof(char) * (15 + 1))) == NULL)
 		return (84);
-	if (ac > 1) {
-		if (my_strcmp(av[1], "--help") == 0) {
-			display_help();
-			return (0);
-		}
+	if (ac  >= 1 && my_strcmp(av[1], "--help") == 0) {
+		display_help();
+		return (0);
 	}
 	display_game();
 	the_floor[0] = 21;

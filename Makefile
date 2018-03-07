@@ -10,15 +10,22 @@ SRC	=		src/main.c		\
 			src/piece.c		\
 			src/utils.c		\
 			src/display_game.c	\
-			src/game.c		\
-			lib/my_put_nbr.c	\
-			lib/my_putstr.c		\
-			lib/my_strlen.c		\
-			lib/my_getnbr.c
+			src/file.c		\
+			src/my_strcat.c		\
+			src/my_str_to_word_tab.c \
+			src/my_strcpy.c		\
+			src/my_getnbr.c		\
 
 CRIT_SRC	=	bonus/is_valid_file.c	\
+			bonus/str_to_word_tab.c	\
 			bonus/contains_str.c	\
 			bonus/strcmp.c		\
+			bonus/strcpy.c		\
+			src/file.c		\
+			src/my_strcat.c		\
+			src/my_str_to_word_tab.c \
+			src/my_strcpy.c		\
+			src/my_getnbr.c		\
 			src/utils.c		\
 			src/piece.c		\
 			src/get_next_line.c	\
