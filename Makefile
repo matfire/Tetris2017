@@ -10,6 +10,11 @@ SRC	=		src/main.c		\
 			src/piece.c		\
 			src/utils.c		\
 			src/display_game.c	\
+			src/game.c		\
+			lib/my_put_nbr.c	\
+			lib/my_putstr.c		\
+			lib/my_strlen.c		\
+			lib/my_getnbr.c
 
 CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/contains_str.c	\

@@ -87,9 +87,8 @@ void display_tetris(void)
 	display_tetris2();
 }
 
-void display_game(piece_t **pieces)
+void display_game(void)
 {
-	int ch;
 	int i = 1;
 
 	initscr();
@@ -108,7 +107,8 @@ void display_game(piece_t **pieces)
 	mvprintw(10, 2, "Score");
 	mvprintw(12, 2, "Lines");
 	mvprintw(13, 2, "Level");
-	mvprintw(15, 2, "Timer");
+	mvprintw(15, 2, "Timer (ou pas)");
+	refresh();
 }
 
 /*
@@ -117,4 +117,9 @@ void display_game(piece_t **pieces)
 67 -> fléche de droite
 68 -> fléche de gauche
 32 -> espace
+*/
+/*
+Pour afficher le timer mettre le nombre dans un char *timer puis prendre la
+position du dernier chiffre et faire position - strlen pour avoir un temps bien
+placer
 */

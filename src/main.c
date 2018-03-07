@@ -27,26 +27,37 @@ void display_help(void)
 
 int main(int ac, char **av)
 {
-	piece_t **pieces;
+	// piece_t **pieces;
+	int *the_floor;
+	int i = -1;
 
-	if (my_strcmp(av[1], "--help") == 0) {
-		display_help();
-		return (0);
-	}
-	// if ((pieces = create_pieces()) == NULL)
-	// 	return (84);
-	display_game(pieces);
-	while (42) {
-		ch = getch();
-		// if (ch == KEY_UP)
-		// else if (ch == KEY_LEFT)
-		// else if (ch == KEY_DOWN)
-		// else if (ch == KEY_RIGHT)
-		refresh();
-		if (ch == KEY_UP) {
-			endwin();
+	if ((the_floor = malloc(sizeof(char) * (15 + 1))) == NULL)
+		return (84);
+	if (ac > 1) {
+		if (my_strcmp(av[1], "--help") == 0) {
+			display_help();
 			return (0);
 		}
 	}
+	display_game();
+	the_floor[0] = 21;
+	the_floor[1] = 21;
+	the_floor[2] = 21;
+	the_floor[3] = 21;
+	the_floor[4] = 21;
+	the_floor[5] = 21;
+	the_floor[6] = 21;
+	the_floor[7] = 21;
+	the_floor[8] = 21;
+	// the_floor[9] = 21;
+	the_floor[10] = 21;
+	// while (++i < 10) {
+	// 	the_floor[i] = 20 + 2;
+	// }
+	// the_floor[i] = '\0';
+	// i = 1;
+	// if ((pieces = create_pieces()) == NULL)
+	// 	return (84);
+	game(the_floor);
 	return (0);
 }
