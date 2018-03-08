@@ -38,7 +38,7 @@ NAME	=	tetris
 
 CFLAGS	+=	-Wall -Wextra -I./inc -g
 
-LDFLAGS = -lcriterion -lgcov --verbose -I./inc
+LDFLAGS = -lcriterion -lgcov -I./inc -pedantic --verbose -Wall -Wextra
 
 all	:	$(NAME)
 
