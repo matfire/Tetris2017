@@ -31,29 +31,16 @@ int main(int ac, char **av)
 	int *the_floor;
 	int i = -1;
 
-	if ((the_floor = malloc(sizeof(char) * (15 + 1))) == NULL)
-		return (84);
-	if (ac  >= 1 && my_strcmp(av[1], "--help") == 0) {
+	if (ac  > 1 && my_strcmp(av[1], "--help") == 0) {
 		display_help();
 		return (0);
 	}
+	if ((the_floor = malloc(sizeof(int) * (10 + 1))) == NULL)
+		return (84);
 	display_game();
-	the_floor[0] = 21;
-	the_floor[1] = 21;
-	the_floor[2] = 21;
-	the_floor[3] = 21;
-	the_floor[4] = 21;
-	the_floor[5] = 21;
-	the_floor[6] = 21;
-	the_floor[7] = 21;
-	the_floor[8] = 21;
-	// the_floor[9] = 21;
-	the_floor[10] = 21;
-	// while (++i < 10) {
-	// 	the_floor[i] = 20 + 2;
-	// }
-	// the_floor[i] = '\0';
-	// i = 1;
+	while (++i < 10)
+		the_floor[i] = 20 + 1;
+	the_floor[i] = '\0';
 	// if ((pieces = create_pieces()) == NULL)
 	// 	return (84);
 	game(the_floor);
