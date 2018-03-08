@@ -7,35 +7,36 @@
 
 #include "tetris.h"
 
-int piece_floor(int xy[], int *the_floor)
+int piece_floor(int *xy, int *the_floor)
 {
 	if (the_floor[xy[1] - 23] == xy[0] + 1) {
-		the_floor[xy[1] - 23] += 1;
+		the_floor[xy[1] - 23] -= 1;
 		return(-1);
 	}
 	return (0);
 }
 
-int gravit(int i, int xy[], int *the_floor)
+int *gravit(int i, int *xy, int *the_floor)
 {
-	int nb_lvl = 150000;
-	int x = xy[0];
-	int y = xy[1];
+	int nb_lvl = 15000;
 
 	if ((i % nb_lvl) == 0) {
 		if (piece_floor(xy, the_floor) != -1) {
-			mvprintw(x, y, " ");
-			x++;
-			mvprintw(x, y, "*");
+			mvprintw(xy[0], xy[1], " ");
+			xy[0]++;
+			mvprintw(xy[0], xy[1], "*");
 			move(0, 0);
-			return (x);
-		} else
-			return (-1);
+			return (xy);
+		} else {
+			xy[0] = 2;
+			xy[1] = 28;
+			return (xy);
+		}
 	}
-	return (xy[0]);
+	return (xy);
 }
 
-int move_piece(int xy[], char l_r, int *wall)
+int move_piece(int *xy, char l_r, int *wall)
 {
 	mvprintw(xy[0], xy[1], " ");
 	if (l_r == 'l' && wall[xy[0]] != xy[1] - 1) {
@@ -67,15 +68,17 @@ int *the_wall(int *the_floor, int nb)
 int game(int *the_floor)
 {
 	int i = 1;
-	int xy[] = {2, 28};
+	int *xy = malloc(sizeof(int) * (3));
 	int ch;
 	int *wall_left = the_wall(the_floor, 22);
 	int *wall_right = the_wall(the_floor, 23 + 10);
 
+	xy[0] = 2;
+	xy[1] = 28;
 	mvprintw(xy[0], xy[1], "*");
 	move(0, 0);
 	while (42) {
-		xy[0] = gravit(i, xy, the_floor);
+		xy = gravit(i, xy, the_floor);
 		i++;
 		timeout(0);
 		ch = getch();
