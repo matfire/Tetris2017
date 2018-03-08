@@ -32,7 +32,7 @@ piece_t *add_block(char *file_name)
 	char **data_tetrimino;
 	piece_t *res;
 	int fd = 0;
-	int i = 1;
+	int i = 0;
 
 	res = malloc(sizeof(piece_t) * 1);
 	file_path = my_strcat("tetriminos/", file_name);
@@ -63,9 +63,9 @@ piece_t **create_pieces(void)
 	pieces = malloc(sizeof(piece_t*) * (count + 1));
 	pieces[count] = NULL;
 	dir = opendir("tetriminos");
-	//for (int i = 0; i < count; i++) {
-	//	pieces[i] = create_block(dir);
-	//}
+	for (int i = 0; i < count; i++) {
+		pieces[i] = create_block(dir);
+	}
 	closedir(dir);
 	return (pieces);
 }

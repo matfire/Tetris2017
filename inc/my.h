@@ -20,8 +20,6 @@ int my_put_int(int nb);
 void my_put_nbr(double nb, int deci);
 int my_compute_power_it(int nb, int p);
 
-int my_getnbr(char const *str);
-
 int my_strlen(char *str);
 
 #endif
