@@ -41,6 +41,6 @@ int main(int ac, char **av)
 	while (++i < 10)
 		the_floor[i] = 20 + 1;
 	the_floor[i] = '\0';
-	game(the_floor, pieces);
+	game(the_floor);
 	return (0);
 }
