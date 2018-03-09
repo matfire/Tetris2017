@@ -15,11 +15,12 @@ piece_t *create_block(DIR *dir)
 	res = malloc(sizeof(piece_t) * 1);
 	if ((file = readdir(dir)) != NULL && (is_current(file->d_name) || is_valid_file(file->d_name)))
 		file = readdir(dir);
-	else {
+	else if (file != NULL) {
 		res = add_block(file->d_name);
 	}
 	if (res != NULL)
 		return (res);
+	res = malloc(sizeof(piece_t));
 	res->color = 84;
 	return (res);
 
@@ -37,9 +38,13 @@ piece_t *add_block(char *file_name)
 	res = malloc(sizeof(piece_t) * 1);
 	file_path = my_strcat("tetriminos/", file_name);
 	fd = open(file_path, O_RDONLY);
-	data_tetrimino = my_str_to_word_tab(get_next_line(fd));
+	line = get_next_line(fd);
+	if (line == NULL)
+		return (NULL);
+	data_tetrimino = my_str_to_word_tab(line);
+	free(line);
 	res->shape = malloc(sizeof(char*) * (my_getnbr(data_tetrimino[1]) + 1));
-	while ((line = get_next_line(fd))) {
+	while ((line = get_next_line(fd)) != NULL) {
 		res->shape[i] = my_strcpy(line);
 		free(line);
 		i++;

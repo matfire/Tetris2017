@@ -12,7 +12,7 @@ int get_words(char *str)
 	int i = 1;
 	int n = 0;
 
-	for (; str[n] != '\0'; n++) {
+	for (; str[n] != '\0' && str[n] != '\n'; n++) {
 		if (str[n] == ' ')
 			i++;
 	}

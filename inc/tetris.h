@@ -42,4 +42,4 @@ int get_files_on_dir(void);
 int is_current(char *file);
 int find_char(char *str, char c);
 void display_game();
-int game(int *the_floor);
+int game(int *the_floor, piece_t **pieces);

@@ -37,6 +37,10 @@ int my_put_int(int nb)
 	my_putchar(nombre);
 	return (0);
 }
+void my_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 void my_put_nbr(double nb, int deci)
 {
