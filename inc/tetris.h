@@ -25,7 +25,19 @@ typedef struct piece_s {
 	int color;
 }		piece_t;
 
-#endif
+typedef struct settings_s {
+	int level;
+	int key_left;
+	int key_right;
+	int key_turn;
+	int key_drop;
+	int key_quit;
+	int key_pause;
+	int *map_size;
+	int whitout_next;
+}		settings_t;
+
+#define GAME settings_t
 
 char *my_strcat(char *dest, char *src);
 char **my_str_to_word_tab(char *str);
@@ -43,3 +55,5 @@ int is_current(char *file);
 int find_char(char *str, char c);
 void display_game();
 int game(int *the_floor);
+
+#endif
