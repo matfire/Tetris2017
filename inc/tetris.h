@@ -10,6 +10,7 @@
 #define MY_TETRIS
 
 #include <curses.h>
+#include <getopt.h>
 #include <unistd.h>
 #include "get_next_line.h"
 #include <sys/types.h>
@@ -25,7 +26,7 @@ typedef struct piece_s {
 	int color;
 }		piece_t;
 
-typedef struct settings_s {
+struct settings_s {
 	int level;
 	int key_left;
 	int key_right;
@@ -54,6 +55,10 @@ int get_files_on_dir(void);
 int is_current(char *file);
 int find_char(char *str, char c);
 void display_game();
+int check_dir(int ch, char *arg);
+int check_condition(int ch, char *arg);
+int set_conditions(int ac, char **av);
 int game(int *the_floor);
+int check_arg_key(char *arg);
 
 #endif

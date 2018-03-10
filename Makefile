@@ -14,6 +14,8 @@ SRC	=		src/main.c		\
 			src/my_strcat.c		\
 			src/my_str_to_word_tab.c \
 			src/my_strcpy.c		\
+			src/options.c		\
+			src/args.c		\
 			lib/my_getnbr.c		\
 			src/game.c		\
 			lib/my_put_nbr.c	\
@@ -23,6 +25,8 @@ CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/contains_str.c	\
 			bonus/strcmp.c		\
 			bonus/strcpy.c		\
+			bonus/check_dir.c	\
+			bonus/check_arg_key.c	\
 			src/file.c		\
 			src/my_strcat.c		\
 			src/my_str_to_word_tab.c \
@@ -31,6 +35,8 @@ CRIT_SRC	=	bonus/is_valid_file.c	\
 			src/utils.c		\
 			src/piece.c		\
 			src/get_next_line.c	\
+			src/options.c		\
+			src/args.c		\
 
 CRIT_NAME	=	criterion
 
