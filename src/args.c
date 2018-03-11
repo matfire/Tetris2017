@@ -40,7 +40,7 @@ int check_extra(int ch, char *arg)
 			GAME.without_next = 1;
 			break;
 		case 'h':
-			display_help();
+			//display_help();
 			break;
 		default:
 			return (1);
