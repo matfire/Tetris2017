@@ -43,7 +43,7 @@ struct settings_s {
 char *my_strcat(char *dest, char *src);
 char **my_str_to_word_tab(char *str);
 char *my_strcpy(char *src);
-// int my_getnbr(char *str);
+int my_getnbr(char *str);
 void my_putstr(char *str);
 int my_strcmp(char *s1, char *s2);
 int my_strlen(char *str);
@@ -60,5 +60,6 @@ int check_condition(int ch, char *arg);
 int set_conditions(int ac, char **av);
 int game(int *the_floor);
 int check_arg_key(char *arg);
+int check_level_error(char *arg);
 
 #endif

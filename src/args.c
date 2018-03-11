@@ -17,3 +17,12 @@ int check_arg_key(char *arg)
 		return (1);
 	return (0);
 }
+
+int check_level_error(char *arg)
+{
+	int nb = my_getnbr(arg);
+
+	if (nb <= 0 || nb > 10)
+		return (1);
+	return (0);
+}

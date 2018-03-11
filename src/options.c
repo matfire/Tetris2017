@@ -9,8 +9,8 @@
 
 int check_dir(int ch, char *arg)
 {
-//	if (check_arg_key(arg))
-	//	return (1);
+	if (check_arg_key(arg))
+		return (1);
 	switch (ch) {
 		case 'l':
 			GAME.key_left = arg[0];
@@ -36,9 +36,16 @@ int check_dir(int ch, char *arg)
 	return (0);
 }
 
+int check_level(char *arg)
+{
+	if (check_level_error(arg))
+		return (1);
+	GAME.level = my_getnbr(arg);
+	return (0);
+}
 int check_condition(int ch, char *arg)
 {
-	// && check_level(ch, arg) && check_extra(ch, arg)
+	// && check_level(arg) && check_extra(ch, arg)
 	if (check_dir(ch, arg))
 		return (1);
 	return (0);
@@ -64,4 +71,5 @@ int set_conditions(int ac, char **av)
 	while ((ch = getopt_long(ac, av, "h:L:l:r:t:d:q:p:m:w:D", long_options, NULL)) != -1)
 		if (check_condition(ch, optarg))
 			return (1);
+	return (0);
 }

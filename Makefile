@@ -27,6 +27,7 @@ CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/strcpy.c		\
 			bonus/check_dir.c	\
 			bonus/check_arg_key.c	\
+			bonus/check_level_error.c	\
 			src/file.c		\
 			src/my_strcat.c		\
 			src/my_str_to_word_tab.c \
