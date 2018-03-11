@@ -35,7 +35,7 @@ struct settings_s {
 	int key_quit;
 	int key_pause;
 	int *map_size;
-	int whitout_next;
+	int without_next;
 }		settings_t;
 
 #define GAME settings_t

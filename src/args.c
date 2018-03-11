@@ -26,3 +26,24 @@ int check_level_error(char *arg)
 		return (1);
 	return (0);
 }
+
+int check_extra(int ch, char *arg)
+{
+	switch (ch) {
+		case 'D':
+			//debug_mode();
+			break;
+		case 'm':
+			//set_map_size(arg);
+			break;
+		case 'w':
+			GAME.without_next = 1;
+			break;
+		case 'h':
+			display_help();
+			break;
+		default:
+			return (1);
+	}
+	return (0);
+}

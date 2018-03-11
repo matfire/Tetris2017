@@ -45,8 +45,7 @@ int check_level(char *arg)
 }
 int check_condition(int ch, char *arg)
 {
-	// && check_level(arg) && check_extra(ch, arg)
-	if (check_dir(ch, arg))
+	if (check_dir(ch, arg) && check_level(arg) && check_extra(ch, arg))
 		return (1);
 	return (0);
 }
