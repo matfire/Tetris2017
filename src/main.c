@@ -7,9 +7,11 @@
 
 #include "tetris.h"
 
-void display_help(void)
+void display_help(char **av)
 {
-	my_putstr("Usage:\t./tetris [options]\nOptions:\n --help\t\t\tDisplay "
+	my_putstr("Usage:\t");
+	my_putstr(av[0]);
+	my_putstr("\nOptions:\n --help\t\t\tDisplay "
 	"this help\n -L --level={num}\tStart Tetris at level num (def: 1)\n -l "
 	"--key-left={k}\tMove the tetrimino LEFT using the K key (def: left "
 	"arrow)\n -r --key-right={K}\tMove the tetrimino RIGHT using the K key "
@@ -30,7 +32,7 @@ int main(int ac, char **av)
 	int i = -1;
 
 	if (ac  > 1 && my_strcmp(av[1], "--help") == 0) {
-		display_help();
+		display_help(av);
 		return (0);
 	}
 	if ((pieces = create_pieces()) == NULL)
