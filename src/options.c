@@ -11,6 +11,7 @@ int check_dir(int ch, char *arg)
 {
 	if (check_arg_key(arg))
 		return (1);
+	set_key();
 	switch (ch) {
 		case 'l':
 			GAME.key_left = arg[0];

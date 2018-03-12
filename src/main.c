@@ -31,10 +31,8 @@ int main(int ac, char **av)
 	int *the_floor;
 	int i = -1;
 
-	if (ac  > 1 && my_strcmp(av[1], "--help") == 0) {
-		display_help(av);
-		return (0);
-	}
+	if (set_conditions(ac, av))
+		return (84);
 	if ((pieces = create_pieces()) == NULL)
 		return (84);
 	if ((the_floor = malloc(sizeof(int) * (10 + 1))) == NULL)
