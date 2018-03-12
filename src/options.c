@@ -11,7 +11,6 @@ int check_dir(int ch, char *arg)
 {
 	if (check_arg_key(arg))
 		return (1);
-	set_key();
 	switch (ch) {
 		case 'l':
 			GAME.key_left = arg[0];
@@ -40,20 +39,25 @@ int check_dir(int ch, char *arg)
 int check_level(char *arg)
 {
 	if (check_level_error(arg))
-		return (1);
-	GAME.level = my_getnbr(arg);
+		exit(84);
+	if (arg != NULL)
+		GAME.level = my_getnbr(arg);
+	else
+		GAME.level = 1;
 	return (0);
 }
 int check_condition(int ch, char *arg)
 {
-	if (check_dir(ch, arg) && check_level(arg) && check_extra(ch, arg))
-		return (1);
+	check_extra(ch, arg);
+	if ((check_dir(ch, arg) && check_level(arg)) && check_extra(ch, arg))
+		exit (84);
 	return (0);
 }
 
 int set_conditions(int ac, char **av)
 {
 	int ch = 0;
+	set_key();
 	static struct option long_options[] = {
 		{"help", no_argument, NULL, 'h'},
 		{"level", required_argument, NULL, 'L'},
@@ -65,11 +69,11 @@ int set_conditions(int ac, char **av)
 		{"key-pause", required_argument, NULL, 'p'},
 		{"map-size", required_argument, NULL, 'm'},
 		{"without-next", required_argument, NULL, 'w'},
-		{"debug", required_argument, NULL, 'D'},
-		{NULL, 0, NULL, 0}
+		{"debug", no_argument, NULL, 'D'}
 	};
-	while ((ch = getopt_long(ac, av, "h:L:l:r:t:d:q:p:m:w:D", long_options, NULL)) != -1)
+	while ((ch = getopt_long(ac, av, "h:L:l:r:t:d:q:p:m:w:D", long_options, NULL)) != -1) {
 		if (check_condition(ch, optarg))
 			return (1);
+	}
 	return (0);
 }

@@ -20,10 +20,12 @@ int check_arg_key(char *arg)
 
 int check_level_error(char *arg)
 {
-	int nb = my_getnbr(arg);
-
-	if (nb <= 0 || nb > 10)
-		return (1);
+	int nb = 0;
+	if (arg != NULL) {
+		nb = my_getnbr(arg);
+		if (nb <= 0 || nb > 10)
+			return (1);
+	}
 	return (0);
 }
 
@@ -31,7 +33,7 @@ int check_extra(int ch, char *arg)
 {
 	switch (ch) {
 		case 'D':
-			//debug_mode();
+			GAME.is_debug = 1;
 			break;
 		case 'm':
 			//set_map_size(arg);
@@ -40,7 +42,7 @@ int check_extra(int ch, char *arg)
 			GAME.without_next = 1;
 			break;
 		case 'h':
-			//display_help();
+			GAME.is_help = 1;
 			break;
 		default:
 			return (1);

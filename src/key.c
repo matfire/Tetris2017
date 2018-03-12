@@ -15,5 +15,7 @@ int set_key(void)
 	GAME.key_turn = 65;
 	GAME.key_pause = 112;
 	GAME.key_quit = 113;
+	GAME.is_debug = 0;
+	GAME.is_help = 0;
 	return (0);
 }

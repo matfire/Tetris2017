@@ -17,6 +17,8 @@ SRC	=		src/main.c		\
 			src/options.c		\
 			src/args.c		\
 			src/key.c		\
+			src/debug.c		\
+			src/help.c		\
 			lib/my_getnbr.c		\
 			src/game.c		\
 			lib/my_put_nbr.c	\

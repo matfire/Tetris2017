@@ -28,12 +28,14 @@ typedef struct piece_s {
 
 struct settings_s {
 	int level;
-	int key_left;
-	int key_right;
-	int key_turn;
-	int key_drop;
-	int key_quit;
-	int key_pause;
+	int is_debug;
+	int is_help;
+	char key_left;
+	char key_right;
+	char key_turn;
+	char key_drop;
+	char key_quit;
+	char key_pause;
 	int *map_size;
 	int without_next;
 }		settings_t;
@@ -55,8 +57,11 @@ int get_files_on_dir(void);
 int is_current(char *file);
 int find_char(char *str, char c);
 void display_game();
+void display_help(char **av);
+void debug_mode(void);
 int check_dir(int ch, char *arg);
 int check_condition(int ch, char *arg);
+int check_extra(int ch, char *arg);
 int set_conditions(int ac, char **av);
 int game(int *the_floor);
 int check_arg_key(char *arg);
