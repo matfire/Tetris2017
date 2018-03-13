@@ -19,6 +19,7 @@ SRC	=		src/main.c		\
 			src/key.c		\
 			src/debug.c		\
 			src/help.c		\
+			src/my_printf.c		\
 			lib/my_getnbr.c		\
 			src/game.c		\
 			lib/my_put_nbr.c	\
@@ -32,6 +33,7 @@ CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/check_arg_key.c	\
 			bonus/check_level_error.c	\
 			bonus/key.c		\
+			bonus/set_size.c	\
 			src/file.c		\
 			src/my_strcat.c		\
 			src/my_str_to_word_tab.c \

@@ -7,6 +7,13 @@
 
 #include "tetris.h"
 
+void set_size(int width, int height)
+{
+	GAME.map_size = malloc(sizeof(int) * 2);
+	GAME.map_size[0] = width;
+	GAME.map_size[1] = height;
+}
+
 int set_key(void)
 {
 	GAME.key_left = 68;
@@ -17,5 +24,8 @@ int set_key(void)
 	GAME.key_quit = 113;
 	GAME.is_debug = 0;
 	GAME.is_help = 0;
+	GAME.level = 1;
+	GAME.without_next = 0;
+	set_size(20, 10);
 	return (0);
 }

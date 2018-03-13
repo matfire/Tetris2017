@@ -68,7 +68,7 @@ int set_conditions(int ac, char **av)
 		{"key-quit", required_argument, NULL, 'q'},
 		{"key-pause", required_argument, NULL, 'p'},
 		{"map-size", required_argument, NULL, 'm'},
-		{"without-next", required_argument, NULL, 'w'},
+		{"without-next", no_argument, NULL, 'w'},
 		{"debug", no_argument, NULL, 'D'}
 	};
 	while ((ch = getopt_long(ac, av, "h:L:l:r:t:d:q:p:m:w:D", long_options, NULL)) != -1) {
