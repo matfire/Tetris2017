@@ -27,7 +27,7 @@ int my_printf(const char *format, ...)
 					my_putstr(va_arg(list, char*));
 					break;
 				case 'd':
-					my_put_int(va_arg(list, int));
+					my_put_nbr(va_arg(list, int));
 					break;
 				default:
 					my_putchar(format[i]);

@@ -17,7 +17,6 @@ void my_putstr(char *str);
 void my_put_double_str(char **str);
 
 int my_put_int(int nb);
-void my_put_nbr(double nb, int deci);
 int my_compute_power_it(int nb, int p);
 
 int my_strlen(char *str);

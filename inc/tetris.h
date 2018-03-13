@@ -67,6 +67,7 @@ int game(int *the_floor);
 int check_arg_key(char *arg);
 int check_level_error(char *arg);
 int set_key(void);
+int my_put_nbr(int nb);
 int my_printf(const char *format, ...);
 void set_size(int width, int height);
 #endif

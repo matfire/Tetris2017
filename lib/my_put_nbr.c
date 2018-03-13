@@ -2,56 +2,41 @@
 ** EPITECH PROJECT, 2017
 ** my_put_nbr
 ** File description:
-**
+** display number given
 */
 
-#include "my.h"
+#include "tetris.h"
 
-int my_compute_power_it(int nb, int p)
-{
-	int a = nb;
+void check_nbr(int nb);
 
-	if (p == 0) {
-		return (1);
-	} else if (p < 0) {
-		return (0);
-	}
-	while (p != 1) {
-		nb = nb * a;
-		p = p - 1;
-	}
-	return (nb);
-}
-
-int my_put_int(int nb)
-{
-	int nombre;
-
-	if (nb < 0) {
-		nb = -nb;
-		my_putchar('-');
-	}
-	if (nb > 9)
-		my_put_int(nb / 10);
-	nombre = nb % 10 + 48;
-	my_putchar(nombre);
-	return (0);
-}
 void my_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void my_put_nbr(double nb, int deci)
+int my_put_nbr(int nb)
 {
-	int entier = (int) nb;
-	double dif = nb - entier;
-	int ten = my_compute_power_it(10, deci);
+	if (nb >= 0 && nb < 10) {
+		my_putchar('0' + nb);
+		return (0);
+	} else {
+		check_nbr(nb);
+	}
+	return (0);
+}
 
-	my_put_int(entier);
-	if (dif > 0) {
-		my_putchar('.');
-		dif = dif * ten;
-		my_put_int((int) dif);
+void check_nbr(int nb)
+{
+	if (nb < 0) {
+		if (nb == -2147483648) {
+			my_put_nbr(-214748364);
+			my_put_nbr(8);
+			return;
+		}
+		my_putchar('-');
+		my_putchar(-nb);
+	} else {
+		my_put_nbr(nb / 10);
+		my_put_nbr(nb % 10);
 	}
 }

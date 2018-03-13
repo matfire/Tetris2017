@@ -18,7 +18,12 @@ void print_next(void)
 void print_level_size(void)
 {
 	my_putstr("Level :\t");
-	my_put_int(GAME.level);
+	my_put_nbr(GAME.level);
+	my_putstr("\nSize :\t");
+	my_put_nbr(GAME.map_size[0]);
+	my_putstr("*");
+	my_put_nbr(GAME.map_size[1]);
+	my_putstr("\n");
 }
 void debug_mode(void)
 {
