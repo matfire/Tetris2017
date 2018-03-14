@@ -7,6 +7,13 @@
 
 #include "tetris.h"
 
+void wait_for_key_press(void)
+{
+	int ch = 0;
+	my_putstr("Press any key to start Tetris\n");
+	while ((ch = getch()) == -1);
+}
+
 int main(int ac, char **av)
 {
 	piece_t **pieces;
@@ -17,6 +24,7 @@ int main(int ac, char **av)
 		return (84);
 	if (GAME.is_debug) {
 		debug_mode();
+		wait_for_key_press();
 	}
 	if (GAME.is_help) {
 		display_help(av);
