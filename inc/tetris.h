@@ -11,6 +11,7 @@
 
 #include <curses.h>
 #include <getopt.h>
+#include <termios.h>
 #include <unistd.h>
 #include "get_next_line.h"
 #include <sys/types.h>

@@ -7,11 +7,31 @@
 
 #include "tetris.h"
 
+struct termios set_term_no_enter(void)
+{
+	struct termios orig;
+	struct termios info;
+	tcgetattr(0, &orig);
+	info = orig;
+	info.c_lflag &= ~ICANON;
+	info.c_cc[VMIN] = 1;
+	info.c_cc[VTIME] = 0;
+	tcsetattr(0, TCSANOW, &info);
+	return (orig);
+}
+
+void restore_term(struct termios orig)
+{
+	tcsetattr(0, TCSANOW, &orig);
+}
+
 void wait_for_key_press(void)
 {
-	int ch = 0;
+	struct termios orig;
 	my_putstr("Press any key to start Tetris\n");
-	while ((ch = getch()) == -1);
+	orig = set_term_no_enter();
+	while(read(0, NULL, 1) == 0);
+	restore_term(orig);
 }
 
 int main(int ac, char **av)
