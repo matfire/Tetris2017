@@ -18,8 +18,10 @@ int main(int ac, char **av)
 	if (GAME.is_debug) {
 		debug_mode();
 	}
-	if (GAME.is_help)
+	if (GAME.is_help) {
 		display_help(av);
+		return (0);
+	}
 	if ((pieces = create_pieces()) == NULL)
 		return (84);
 	if ((the_floor = malloc(sizeof(int) * (10 + 1))) == NULL)
