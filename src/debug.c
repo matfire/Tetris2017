@@ -25,6 +25,17 @@ void print_level_size(void)
 	my_put_nbr(GAME.map_size[1]);
 	my_putstr("\n");
 }
+
+void print_tetriminos(void)
+{
+	piece_t **pieces;
+	pieces = create_pieces();
+	print_tetriminos_count();
+	for (int i = 0; i < get_files_on_dir();  i++)
+		print_tetriminos_data(pieces[i]);
+
+}
+
 void debug_mode(void)
 {
 	my_putstr("*** DEBUG MODE ***\nKey Left :\t");
@@ -42,5 +53,5 @@ void debug_mode(void)
 	my_putstr("\n");
 	print_next();
 	print_level_size();
-	//print_tetriminos();
+	print_tetriminos();
 }
