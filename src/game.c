@@ -16,13 +16,13 @@ int piece_floor(int *xy, int *the_floor)
 	return (0);
 }
 
-int *gravit(int i, int *xy, int *the_floor)
+int *gravit(int i, int *xy, int *the_floor, char **piece)
 {
-	int nb_lvl = 15000;
+	int nb_lvl = 150000;
 
 	if ((i % nb_lvl) == 0) {
 		if (piece_floor(xy, the_floor) != -1) {
-			mvprintw(xy[0], xy[1], " ");
+			// clear_piece(xy, piece);
 			xy[0]++;
 			mvprintw(xy[0], xy[1], "*");
 			move(0, 0);
@@ -65,29 +65,39 @@ int *the_wall(int *the_floor, int nb)
 	return (wall);
 }
 
-int game(int *the_floor)
+int game(int *the_floor, piece_t **pieces)
 {
 	int i = 1;
 	int *xy = malloc(sizeof(int) * (3));
 	int ch;
 	int *wall_left = the_wall(the_floor, 22);
-	int *wall_right = the_wall(the_floor, 23 + 10);
+	int *wall_right = the_wall(the_floor, 23 + GAME.map_size[1]);
+	int j = -1;
+	char **piece = pieces[0]->shape;
 
 	xy[0] = 2;
 	xy[1] = 28;
-	mvprintw(xy[0], xy[1], "*");
+	while (pieces[++j] != NULL) {
+		my_putchar('A');
+		move(xy[0], xy[1]);
+		my_putchar('B');
+		xy[0]++;
+		my_putchar('C');
+		printw("%s", piece[j]);
+		my_putchar('D');
+	}
 	move(0, 0);
 	while (42) {
-		xy = gravit(i, xy, the_floor);
+		xy = gravit(i, xy, the_floor, piece);
 		i++;
 		timeout(0);
 		ch = getch();
-		if (ch == 32) {
+		if (ch == GAME.key_quit) {
 			endwin();
 			return (0);
-		} else if (ch == KEY_LEFT)
+		} else if (ch == GAME.key_left)
 			xy[1] = move_piece(xy, 'l', wall_left);
-		else if (ch == KEY_RIGHT)
+		else if (ch == GAME.key_right)
 			xy[1] = move_piece(xy, 'r', wall_right);
 		refresh();
 	}

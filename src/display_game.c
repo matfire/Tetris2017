@@ -95,14 +95,14 @@ void display_game(void)
 	raw();
 	keypad(stdscr, TRUE);
 	display_tetris();
-	mvprintw(1, 21, " %s", line(10, '+', '-', '+'));
-	while (++i < 20 + 1)
-		mvprintw(i, 21, " %s", line(10, '|', ' ', '|'));
-	mvprintw(i, 21, " %s", line(10, '+', '-', '+'));
-	mvprintw(1, 24 + 10, " /-next----\\");
-	mvprintw(2, 24 + 10, " |         |");
-	mvprintw(3, 24 + 10, " |         |");
-	mvprintw(4, 24 + 10, " \\---------/");
+	mvprintw(1, 21, " %s", line(GAME.map_size[1], '+', '-', '+'));
+	while (++i < GAME.map_size[0] + 1)
+		mvprintw(i, 21, " %s", line(GAME.map_size[1], '|', ' ', '|'));
+	mvprintw(i, 21, " %s", line(GAME.map_size[1], '+', '-', '+'));
+	mvprintw(1, 24 + GAME.map_size[1], " /-next----\\");
+	mvprintw(2, 24 + GAME.map_size[1], " |         |");
+	mvprintw(3, 24 + GAME.map_size[1], " |         |");
+	mvprintw(4, 24 + GAME.map_size[1], " \\---------/");
 	mvprintw(9, 2, "High Score");
 	mvprintw(10, 2, "Score");
 	mvprintw(12, 2, "Lines");

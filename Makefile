@@ -24,6 +24,7 @@ SRC	=		src/main.c		\
 			lib/my_getnbr.c		\
 			src/game.c		\
 			lib/my_put_nbr.c	\
+			src/clear_piece.c	\
 
 CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/str_to_word_tab.c	\
