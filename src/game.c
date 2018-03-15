@@ -22,9 +22,9 @@ int *gravit(int i, int *xy, int *the_floor, char **piece)
 
 	if ((i % nb_lvl) == 0) {
 		if (piece_floor(xy, the_floor) != -1) {
-			// clear_piece(xy, piece);
+			clear_piece(xy, piece);
 			xy[0]++;
-			mvprintw(xy[0], xy[1], "*");
+			display_piece(xy, piece);
 			move(0, 0);
 			return (xy);
 		} else {
@@ -36,19 +36,19 @@ int *gravit(int i, int *xy, int *the_floor, char **piece)
 	return (xy);
 }
 
-int move_piece(int *xy, char l_r, int *wall)
+int move_piece(int *xy, char l_r, int *wall, char **piece)
 {
-	mvprintw(xy[0], xy[1], " ");
+	clear_piece(xy, piece);
 	if (l_r == 'l' && wall[xy[0]] != xy[1] - 1) {
 		xy[1]--;
-		mvprintw(xy[0], xy[1], "*");
+		display_piece(xy, piece);
 		move(0, 0);
 	} else if (l_r == 'r' && wall[xy[0]] != xy[1] + 1) {
 		xy[1]++;
-		mvprintw(xy[0], xy[1], "*");
+		display_piece(xy, piece);
 		move(0, 0);
 	} else {
-		mvprintw(xy[0], xy[1], "*");
+		display_piece(xy, piece);
 		move(0, 0);
 	}
 	return (xy[1]);
@@ -77,14 +77,8 @@ int game(int *the_floor, piece_t **pieces)
 
 	xy[0] = 2;
 	xy[1] = 28;
-	while (pieces[++j] != NULL) {
-		my_putchar('A');
-		move(xy[0], xy[1]);
-		my_putchar('B');
-		xy[0]++;
-		my_putchar('C');
-		printw("%s", piece[j]);
-		my_putchar('D');
+	while (++j < 3) {
+		mvprintw(xy[0] + j, xy[1], "%s", piece[j]);
 	}
 	move(0, 0);
 	while (42) {
@@ -96,9 +90,9 @@ int game(int *the_floor, piece_t **pieces)
 			endwin();
 			return (0);
 		} else if (ch == GAME.key_left)
-			xy[1] = move_piece(xy, 'l', wall_left);
+			xy[1] = move_piece(xy, 'l', wall_left, piece);
 		else if (ch == GAME.key_right)
-			xy[1] = move_piece(xy, 'r', wall_right);
+			xy[1] = move_piece(xy, 'r', wall_right, piece);
 		refresh();
 	}
 	return (0);

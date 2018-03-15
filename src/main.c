@@ -53,9 +53,6 @@ int main(int ac, char **av)
 		return (84);
 	if ((the_floor = malloc(sizeof(int) * (10 + 1))) == NULL)
 		return (84);
-	printf("%s$\n", pieces[0]->shape[0]);
-	printf("%s$\n", pieces[0]->shape[1]);
-	printf("%s$\n", pieces[0]->shape[2]);
 	display_game();
 	while (++i < GAME.map_size[1])
 		the_floor[i] = GAME.map_size[0] + 1;

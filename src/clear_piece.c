@@ -13,8 +13,17 @@ void clear_piece(int *xy, char **piece)
 	int j = 22;
 
 	while (piece[++i] != NULL) {
-		while (++j < GAME.map_size[1])
-			mvprintw(xy[0], j, " ");
+		while (++j - 22 < GAME.map_size[1])
+			mvprintw(xy[0] + i, j, " ");
 		j = 22;
+	}
+}
+
+void display_piece(int *xy, char **piece)
+{
+	int i = -1;
+
+	while (piece[++i] != NULL) {
+		mvprintw(xy[0] + i, xy[1], "%s", piece[i]);
 	}
 }
