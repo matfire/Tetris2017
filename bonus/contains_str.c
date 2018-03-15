@@ -27,3 +27,8 @@ Test(contains_str, tetriminos)
 {
 	cr_assert_eq(contains_str("1.tetriminos", "tetrimino"), 1);
 }
+
+Test(contains_str, tetris)
+{
+	cr_assert_eq(contains_str("1.tetriminos", "tetrim"), 1);
+}

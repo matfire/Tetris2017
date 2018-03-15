@@ -36,7 +36,6 @@ piece_t *add_block(char *file_name)
 	fd = open(file_path, O_RDONLY);
 	line = get_next_line(fd);
 	res->name = my_strcpy(file_name);
-	printf("%s\n", res->name);
 	if (line == NULL) {
 		res->color = 84;
 		return (res);
