@@ -31,7 +31,7 @@ int get_files_on_dir(void)
 	if (dir == NULL)
 		return (-1);
 	for (int i = 0; (file = readdir(dir)) != NULL; i++) {
-		if (is_valid_file(file->d_name))
+		if (is_valid_file(file->d_name) || is_current(file->d_name))
 			continue;
 		else
 			count += 1;

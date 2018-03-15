@@ -18,10 +18,6 @@ piece_t *create_block(DIR *dir)
 	else if (file != NULL) {
 		res = add_block(file->d_name);
 	}
-	if (res != NULL)
-		return (res);
-	res = malloc(sizeof(piece_t));
-	res->color = 84;
 	return (res);
 
 }
@@ -39,18 +35,25 @@ piece_t *add_block(char *file_name)
 	file_path = my_strcat("tetriminos/", file_name);
 	fd = open(file_path, O_RDONLY);
 	line = get_next_line(fd);
-	if (line == NULL)
-		return (NULL);
+	res->name = my_strcpy(file_name);
+	printf("%s\n", res->name);
+	if (line == NULL) {
+		res->color = 84;
+		return (res);
+	}
 	data_tetrimino = my_str_to_word_tab(line);
 	free(line);
 	res->shape = malloc(sizeof(char*) * (my_getnbr(data_tetrimino[1]) + 1));
 	while ((line = get_next_line(fd)) != NULL) {
+		if (i > my_getnbr(data_tetrimino[1]) || my_strlen(line) > my_getnbr(data_tetrimino[0]))
+			res->color = 84;
 		res->shape[i] = my_strcpy(line);
 		free(line);
 		i++;
 	}
 	res->shape[my_getnbr(data_tetrimino[1])] = NULL;
-	res->color = my_getnbr(data_tetrimino[2]);
+	if (res->color != 84)
+		res->color = my_getnbr(data_tetrimino[2]);
 	free(data_tetrimino);
 	close(fd);
 	free(file_path);
@@ -66,8 +69,8 @@ piece_t **create_pieces(void)
 	if ((count = get_files_on_dir()) <= 0)
 		return (NULL);
 	pieces = malloc(sizeof(piece_t*) * (count + 1));
-	pieces[count] = NULL;
 	dir = opendir("tetriminos");
+	pieces[count] = NULL;
 	for (int i = 0; i < count; i++) {
 		pieces[i] = create_block(dir);
 	}

@@ -11,6 +11,7 @@
 
 #include <curses.h>
 #include <getopt.h>
+#include <termios.h>
 #include <unistd.h>
 #include "get_next_line.h"
 #include <sys/types.h>
@@ -22,6 +23,7 @@
 #include "my.h"
 
 typedef struct piece_s {
+	char *name;
 	char **shape;
 	int color;
 }		piece_t;
@@ -70,4 +72,6 @@ int set_key(void);
 int my_put_nbr(int nb);
 int my_printf(const char *format, ...);
 void set_size(int width, int height);
+void print_tetriminos_count(void);
+void print_tetriminos_data(piece_t *piece);
 #endif
