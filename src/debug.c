@@ -31,7 +31,7 @@ void print_tetriminos(void)
 	piece_t **pieces;
 	pieces = create_pieces();
 	print_tetriminos_count();
-	for (int i = 0; i < get_files_on_dir();  i++)
+	for (int i = 0; pieces[i] != NULL;  i++)
 		print_tetriminos_data(pieces[i]);
 
 }

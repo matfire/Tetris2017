@@ -17,3 +17,13 @@ Test(contains_str, complex)
 {
 	cr_assert_eq(contains_str("bass", "base"), 1);
 }
+
+Test(contains_str, tetrimino)
+{
+	cr_assert_eq(contains_str("1.tetrimino", "tetrimino"), 0);
+}
+
+Test(contains_str, tetriminos)
+{
+	cr_assert_eq(contains_str("1.tetriminos", "tetrimino"), 1);
+}
