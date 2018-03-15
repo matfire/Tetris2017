@@ -17,8 +17,7 @@ int main(int ac, char **av)
 		return (84);
 	if (GAME.is_debug) {
 		debug_mode();
-	}
-	if (GAME.is_help) {
+	} else if (GAME.is_help) {
 		display_help(av);
 		return (0);
 	}
@@ -26,10 +25,13 @@ int main(int ac, char **av)
 		return (84);
 	if ((the_floor = malloc(sizeof(int) * (10 + 1))) == NULL)
 		return (84);
+	printf("%s$\n", pieces[0]->shape[0]);
+	printf("%s$\n", pieces[0]->shape[1]);
+	printf("%s$\n", pieces[0]->shape[2]);
 	display_game();
-	while (++i < 10)
-		the_floor[i] = 20 + 1;
+	while (++i < GAME.map_size[1])
+		the_floor[i] = GAME.map_size[0] + 1;
 	the_floor[i] = '\0';
-	game(the_floor);
+	game(the_floor, pieces);
 	return (0);
 }

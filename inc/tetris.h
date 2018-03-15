@@ -63,7 +63,7 @@ int check_dir(int ch, char *arg);
 int check_condition(int ch, char *arg);
 int check_extra(int ch, char *arg);
 int set_conditions(int ac, char **av);
-int game(int *the_floor);
+int game(int *the_floor, piece_t **pieces);
 int check_arg_key(char *arg);
 int check_level_error(char *arg);
 int set_key(void);
