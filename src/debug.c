@@ -33,7 +33,6 @@ void print_tetriminos(void)
 	print_tetriminos_count();
 	for (int i = 0; pieces[i] != NULL;  i++)
 		print_tetriminos_data(pieces[i]);
-
 }
 
 void debug_mode(void)

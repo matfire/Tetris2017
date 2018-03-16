@@ -13,8 +13,9 @@ piece_t *create_block(DIR *dir)
 	piece_t *res;
 
 	res = malloc(sizeof(piece_t) * 1);
-	if ((file = readdir(dir)) != NULL && (is_current(file->d_name) || is_valid_file(file->d_name)))
+	if ((file = readdir(dir)) != NULL && (is_current(file->d_name) || is_valid_file(file->d_name))){
 		file = readdir(dir);
+	}
 	else if (file != NULL) {
 		res = add_block(file->d_name);
 	}
@@ -66,7 +67,7 @@ piece_t **create_pieces(void)
 	pieces = malloc(sizeof(piece_t*) * (count + 1));
 	dir = opendir("tetriminos");
 	pieces[count] = NULL;
-	for (int i = 0; i < count; i++) {
+	for (int i = 0; pieces[i] != NULL; i++) {
 		pieces[i] = create_block(dir);
 	}
 	closedir(dir);
