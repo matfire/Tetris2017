@@ -37,26 +37,19 @@ piece_t *add_block(char *file_name)
 	stream = fopen(file_path, "r");
 	getline(&line, &n, stream);
 	res->name = my_strcpy(file_name);
-	if (line == NULL) {
-		res->color = 84;
-		return (res);
-	}
-	if (is_nbr(line)) {
+	if (line == NULL || is_nbr(line)) {
 		res->color = 84;
 		return (res);
 	}
 	data_tetrimino = my_str_to_word_tab(line);
-	free(line);
 	res->shape = malloc(sizeof(char*) * (my_getnbr(data_tetrimino[1]) + 1));
 	while (-1 != getline(&line, &n, stream)) {
 		res->shape[i] = my_strcpy(line);
-		free(line);
 		i++;
 	}
 	res->shape[i] = NULL;
 	res->color = my_getnbr(data_tetrimino[2]);
 	free(data_tetrimino);
-	free(line);
 	fclose(stream);
 	free(file_path);
 	return (res);

@@ -21,7 +21,7 @@ SRC	=		src/main.c		\
 			src/help.c		\
 			src/my_printf.c		\
 			src/tetriminos.c	\
-			lib/my_getnbr.c		\
+			src/my_getnbr.c		\
 			src/game.c		\
 			lib/my_put_nbr.c	\
 			src/clear_piece.c	\
