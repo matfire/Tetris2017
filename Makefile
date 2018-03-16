@@ -37,6 +37,7 @@ CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/check_level_error.c	\
 			bonus/key.c		\
 			bonus/set_size.c	\
+			bonus/is_nbr.c		\
 			src/file.c		\
 			src/my_strcat.c		\
 			src/my_str_to_word_tab.c \
@@ -48,6 +49,7 @@ CRIT_SRC	=	bonus/is_valid_file.c	\
 			src/options.c		\
 			src/args.c		\
 			src/key.c		\
+			src/str.c		\
 
 CRIT_NAME	=	criterion
 
