@@ -26,6 +26,7 @@ void print_tetriminos_name(char *name)
 	my_putstr("Name ");
 	my_putstr(name_truncated);
 	my_putstr(" :\t");
+	free (name_truncated);
 }
 
 void print_tetriminos_size_color_shape(piece_t *piece)

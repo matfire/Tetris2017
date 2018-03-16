@@ -26,6 +26,7 @@ SRC	=		src/main.c		\
 			lib/my_put_nbr.c	\
 			src/clear_piece.c	\
 			src/str.c		\
+			src/sort.c		\
 
 CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/str_to_word_tab.c	\
@@ -38,6 +39,7 @@ CRIT_SRC	=	bonus/is_valid_file.c	\
 			bonus/key.c		\
 			bonus/set_size.c	\
 			bonus/is_nbr.c		\
+			bonus/sort.c		\
 			src/file.c		\
 			src/my_strcat.c		\
 			src/my_str_to_word_tab.c \
@@ -50,6 +52,7 @@ CRIT_SRC	=	bonus/is_valid_file.c	\
 			src/args.c		\
 			src/key.c		\
 			src/str.c		\
+			src/sort.c		\
 
 CRIT_NAME	=	criterion
 

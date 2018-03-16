@@ -30,6 +30,7 @@ void print_tetriminos(void)
 {
 	piece_t **pieces;
 	pieces = create_pieces();
+	//pieces = sort_pieces(pieces);
 	print_tetriminos_count();
 	for (int i = 0; pieces[i] != NULL;  i++)
 		print_tetriminos_data(pieces[i]);

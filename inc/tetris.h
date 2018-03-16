@@ -72,7 +72,9 @@ int check_level_error(char *arg);
 int is_nbr(char *str);
 int set_key(void);
 int my_put_nbr(int nb);
-
+piece_t **copy_pieces(piece_t **pieces, int *order);
+piece_t **sort_pieces(piece_t **pieces);
+char **copy_array(char **array);
 int my_printf(const char *format, ...);
 void set_size(int width, int height);
 void print_tetriminos_count(void);
