@@ -18,6 +18,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <dirent.h>
 #include <time.h>
 #include "my.h"
@@ -68,8 +69,10 @@ int set_conditions(int ac, char **av);
 int game(int *the_floor, piece_t **pieces);
 int check_arg_key(char *arg);
 int check_level_error(char *arg);
+int is_nbr(char *str);
 int set_key(void);
 int my_put_nbr(int nb);
+
 int my_printf(const char *format, ...);
 void set_size(int width, int height);
 void print_tetriminos_count(void);

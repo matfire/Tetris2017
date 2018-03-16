@@ -28,33 +28,36 @@ piece_t *add_block(char *file_name)
 	char *line;
 	char **data_tetrimino;
 	piece_t *res;
-	int fd = 0;
+	size_t n = 0;
+	FILE *stream;
 	int i = 0;
 
 	res = malloc(sizeof(piece_t) * 1);
 	file_path = my_strcat("tetriminos/", file_name);
-	fd = open(file_path, O_RDONLY);
-	line = get_next_line(fd);
+	stream = fopen(file_path, "r");
+	getline(&line, &n, stream);
 	res->name = my_strcpy(file_name);
 	if (line == NULL) {
+		res->color = 84;
+		return (res);
+	}
+	if (is_nbr(line)) {
 		res->color = 84;
 		return (res);
 	}
 	data_tetrimino = my_str_to_word_tab(line);
 	free(line);
 	res->shape = malloc(sizeof(char*) * (my_getnbr(data_tetrimino[1]) + 1));
-	while ((line = get_next_line(fd)) != NULL) {
-		if (i > my_getnbr(data_tetrimino[1]) || my_strlen(line) > my_getnbr(data_tetrimino[0]))
-			res->color = 84;
+	while (-1 != getline(&line, &n, stream)) {
 		res->shape[i] = my_strcpy(line);
 		free(line);
 		i++;
 	}
-	res->shape[my_getnbr(data_tetrimino[1])] = NULL;
-	if (res->color != 84)
-		res->color = my_getnbr(data_tetrimino[2]);
+	res->shape[i] = NULL;
+	res->color = my_getnbr(data_tetrimino[2]);
 	free(data_tetrimino);
-	close(fd);
+	free(line);
+	fclose(stream);
 	free(file_path);
 	return (res);
 }

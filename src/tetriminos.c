@@ -52,6 +52,8 @@ void print_tetriminos_size_color_shape(piece_t *piece)
 
 void print_tetriminos_data(piece_t *piece)
 {
+	if (piece->name == NULL)
+		return;
 	my_putstr("Tetriminos :\t");
 	print_tetriminos_name(piece->name);
 	if (piece->color == 84)
